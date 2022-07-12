@@ -1,8 +1,10 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
+import Footer from "../components/footer.vue";
 import latest from "../components/latest.vue";
+import OpenApi from "../components/openApi.vue";
 export default {
-  components: { latest },
+  components: { latest, OpenApi, Footer },
   data: () => ({
     page: 1,
     queryDefault: "world",
@@ -236,6 +238,11 @@ export default {
         >
       </v-row> -->
       <v-row>
+        <v-col cols="12" class="d-sm-block d-none">
+          <OpenApi />
+          <v-divider></v-divider>
+        </v-col>
+
         <v-col cols="12" sm="9">
           <v-row>
             <v-col
@@ -246,8 +253,14 @@ export default {
               v-for="(getInfo, index) in getNewsInfo"
               :key="index"
             >
-              <v-card class="mx-auto my-md-6 my-4">
-                <v-img height="250" :src="getInfo.urlToImage"></v-img>
+              <v-card class="windowHover mx-auto my-md-6 my-4">
+                <div class="overflow">
+                  <v-img
+                    class="hoverImage"
+                    height="250"
+                    :src="getInfo.urlToImage"
+                  ></v-img>
+                </div>
                 <v-card-title class="pb-0">
                   <div class="text-caption d-flex align-center grey--text">
                     <v-icon class="mr-1" small color="grey"
@@ -279,6 +292,7 @@ export default {
         </v-col>
       </v-row>
     </v-container>
+    <Footer />
   </div>
 </template>
 
@@ -288,5 +302,17 @@ export default {
   margin: 0;
   box-sizing: border-box;
   text-decoration: none;
+}
+.overflow {
+  overflow: hidden;
+}
+.windowHover {
+  overflow: hidden;
+}
+.windowHover:hover .hoverImage {
+  transform: scale(1.1);
+}
+.hoverImage {
+  transition: all 0.5s ease;
 }
 </style>

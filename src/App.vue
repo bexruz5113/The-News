@@ -1,50 +1,60 @@
 <script>
+import openApi from "./components/openApi.vue";
 export default {
+  components: { openApi },
   name: "App",
 
   data: () => ({
     drawer: false,
     selectedItem: 0,
+    topPoint: 0,
     nav: [
       {
         title: "Politics",
-        icon: "mdi-home",
+        icon: "mdi-police-badge",
         to: "/",
       },
       {
         title: "Society",
-        icon: "mdi-account-school",
+        icon: "mdi-account-group",
         to: "/add-book",
       },
       {
         title: "Business",
-        icon: "mdi-human-male-board",
+        icon: "mdi-handshake",
         to: "/table",
       },
 
       {
         title: "Tech",
-        icon: "mdi-account-group",
+        icon: "mdi-cog",
         to: { name: "users" },
       },
       {
         title: "Culture",
-        icon: "mdi-book-clock",
+        icon: "mdi-alpha-c-circle",
         to: { name: "users" },
       },
       {
         title: "Sport",
-        icon: "mdi-history",
+        icon: "mdi-weight-lifter",
         to: { name: "users" },
       },
       {
         title: "Tourism",
-        icon: "mdi-cart-heart",
+        icon: "mdi-bed",
         to: { name: "users" },
       },
     ],
   }),
-
+  computed: {
+    comin() {
+      return this.topPoint > 250 ? true : false;
+    },
+    leavin() {
+      return this.topPoint > 250 ? false : true;
+    },
+  },
   methods: {
     nop() {
       // nothing
@@ -52,84 +62,220 @@ export default {
     routerLink(to) {
       this.$router.push(to);
     },
+    scrollPos() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    },
+  },
+  mounted() {
+    window.addEventListener("scroll", () => {
+      this.topPoint = window.scrollY;
+    });
   },
 };
 </script>
 
 <template>
-  <v-app>
-    <v-navigation-drawer v-model="drawer" temporary app>
-      <div class="title py-3 pl-6">The News</div>
+  <div>
+    <div :class="{ rocketUp: comin, rocketDown: leavin }" @click="scrollPos()">
+      <svg
+        id="Capa_1"
+        data-name="Capa 1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 490.52 256.01"
+      >
+        <path
+          class="cls-1"
+          d="M487.41,355.05,252.74,120.38a10.67,10.67,0,0,0-15.08,0L3,355.05a10.67,10.67,0,0,0,15.09,15.08L245.19,143,472.31,370.15a10.66,10.66,0,0,0,15.08-15.08Z"
+          transform="translate(0 -117.26)"
+        />
+        <path
+          d="M479.86,373.27a10.68,10.68,0,0,1-7.55-3.12L245.19,143,18.08,370.15A10.67,10.67,0,0,1,3,355.07L237.66,120.4a10.67,10.67,0,0,1,15.08,0L487.41,355.07a10.67,10.67,0,0,1-7.55,18.2Z"
+          transform="translate(0 -117.26)"
+        />
+      </svg>
+    </div>
+    <v-app>
+      <v-navigation-drawer width="276" v-model="drawer" temporary app>
+        <div class="title py-3 pl-6"><h3>The News</h3></div>
 
-      <v-list dense>
-        <v-list-item-group v-model="selectedItem" color="primary">
-          <v-list-item
-            v-for="item in nav"
-            :key="item.title"
-            @click="routerLink(item.to)"
-          >
-            <v-list-item-icon>
-              <v-icon v-text="item.icon"></v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title v-text="item.title"></v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list-item-group>
-      </v-list>
-    </v-navigation-drawer>
+        <openApi />
+        <v-list dense>
+          <v-list-item-group v-model="selectedItem" color="primary">
+            <v-list-item
+              v-for="item in nav"
+              :key="item.title"
+              @click="routerLink(item.to)"
+            >
+              <v-list-item-icon>
+                <v-icon v-text="item.icon"></v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title
+                  class="pl-2 text-start"
+                  v-text="item.title"
+                ></v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
+      </v-navigation-drawer>
 
-    <v-app-bar app color="primary" dark flat>
-      <v-app-bar-nav-icon class="d-md-none d-block" @click="drawer = !drawer" />
+      <v-app-bar app color="primary" dark flat>
+        <v-app-bar-nav-icon
+          class="d-md-none d-block"
+          @click="drawer = !drawer"
+        />
 
-      <div class="d-flex align-center">
-        <router-link class="ml-4" to="/" tag="button">
-          <v-toolbar-title class="mr-8 d-flex align-center" style="opacity: 0.9"
-            ><v-icon large>mdi-alpha-n-circle</v-icon>ews</v-toolbar-title
-          >
-        </router-link>
-        <li class="d-md-flex d-none mt-1">
-          <ol>
-            Politics
-          </ol>
-          <ol>
-            Society
-          </ol>
-          <ol>
-            Business
-          </ol>
-          <ol>
-            Tech
-          </ol>
-          <ol>
-            Culture
-          </ol>
-          <ol>
-            Sport
-          </ol>
-          <ol>
-            Tourism
-          </ol>
-        </li>
-      </div>
-
-      <v-spacer></v-spacer>
-      <v-btn icon class="mr-2">
-        <v-icon>mdi-account</v-icon>
-      </v-btn>
-    </v-app-bar>
-
-    <v-main>
-      <div style="overflow: hidden">
-        <div style="z-index: 1; position: relative">
-          <router-view />
+        <div class="d-flex align-center">
+          <router-link class="ml-sm-4 ml-2" to="/" tag="button">
+            <v-toolbar-title
+              class="mr-sm-8 mr-5 d-flex align-center"
+              style="opacity: 0.9"
+              ><v-icon large>mdi-alpha-n-circle</v-icon>ews</v-toolbar-title
+            >
+          </router-link>
+          <li class="d-md-flex d-none mt-1">
+            <ol>
+              Politics
+            </ol>
+            <ol>
+              Society
+            </ol>
+            <ol>
+              Business
+            </ol>
+            <ol>
+              Tech
+            </ol>
+            <ol>
+              Culture
+            </ol>
+            <ol>
+              Sport
+            </ol>
+            <ol>
+              Tourism
+            </ol>
+          </li>
         </div>
-      </div>
-    </v-main>
-  </v-app>
+
+        <v-spacer></v-spacer>
+        <v-btn icon class="mr-2">
+          <v-icon>mdi-magnify</v-icon>
+        </v-btn>
+        <v-btn icon class="mr-2">
+          <v-icon>mdi-web</v-icon>
+        </v-btn>
+        <v-btn icon class="mr-2">
+          <v-icon>mdi-account</v-icon>
+        </v-btn>
+      </v-app-bar>
+
+      <v-main>
+        <div style="overflow: hidden">
+          <div style="z-index: 1; position: relative">
+            <router-view />
+          </div>
+        </div>
+      </v-main>
+    </v-app>
+  </div>
 </template>
 
 <style lang="scss">
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  font-family: "Montserrat";
+}
+html {
+  scroll-behavior: smooth;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.rocketUp {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #1976d2;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  animation: comingUp 0.5s linear;
+  &:hover {
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 1px 0px 10px 0px #2976d2;
+  }
+  svg {
+    width: 100%;
+    max-width: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    path {
+      fill: white;
+    }
+  }
+}
+.rocketDown {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #1976d2;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  animation: comingDown 0.5s linear forwards;
+  &:hover {
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 1px 0px 20px 0px #2976d2;
+  }
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    path {
+      fill: white;
+    }
+  }
+}
+@keyframes comingUp {
+  from {
+    bottom: -50px;
+    opacity: 0;
+  }
+  to {
+    visibility: visible;
+    bottom: 20px;
+    opacity: 1;
+  }
+}
+@keyframes comingDown {
+  from {
+    bottom: 20px;
+    opacity: 1;
+  }
+  to {
+    visibility: hidden;
+    bottom: -50px;
+    opacity: 0;
+  }
+}
 .breadcrub-sheet {
   box-shadow: 0 8px 10px -9px rgba(0, 0, 0, 0.05),
     0 3px 14px 2px rgba(0, 0, 0, 0.01), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
