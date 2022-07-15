@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import Home from "@/views/Home.vue";
+import Slide from "@/components/slide.vue";
+import Error from "@/components/error.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -8,6 +10,16 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
+  },
+  {
+    path: "/slide",
+    name: "Slide",
+    component: Slide,
+  },
+  {
+    path: "**",
+    name: "Error",
+    component: Error,
   },
 ];
 

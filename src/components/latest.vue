@@ -22,11 +22,12 @@ export default {
   <div>
     <v-container fluid>
       <v-row>
-        <v-col cols="12" class="pb-0">
-          <h3>Latest News</h3>
+        <v-col cols="12" class="py-0">
+          <p class="text-h5 font-weight-bold text-start mb-0">Latest News</p>
+          <v-divider></v-divider>
         </v-col>
         <v-col
-          class="px-2"
+          class="px-2 mt-2"
           cols="12"
           v-for="(info, index) in latest"
           :key="index"

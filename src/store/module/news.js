@@ -41,7 +41,7 @@ const actions = {
   async getNew({ commit }, payload) {
     await axios
       .get(
-        `https://newsapi.org/v2/everything?q=world&from=2022-07-01&page=${payload}&apiKey=e63d199a2cfe4f45bab845e903a87458`
+        `/everything?q=sport&from=2022-07-01&language=en&pageSize=20&page=${payload}&apiKey=e63d199a2cfe4f45bab845e903a87458`
       )
       .then((result) => {
         console.log(result);

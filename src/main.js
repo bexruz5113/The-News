@@ -4,12 +4,19 @@ import router from "./router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
 import axios from "axios";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import VueI18n from "vue-i18n";
+Vue.use(VueI18n);
 
 Vue.config.productionTip = false;
-Vue.prototype.$http = axios;
-axios.defaults.baseURL = "http://localhost:3000/posts/";
+Vue.prototype.$https = axios;
+axios.defaults.baseURL = "https://newsapi.org/v2";
 
 new Vue({
+  mounted() {
+    AOS.init();
+  },
   router,
   store,
   vuetify,

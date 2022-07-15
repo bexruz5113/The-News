@@ -1,0 +1,11 @@
+{
+  "menu": {
+    "politic": "Politics",
+    "society": "Society",
+    "business": "Business",
+    "tech": "Tech",
+    "culture": "Cultire",
+    "sport": "Sport",
+    "tourism": "Tourism"
+  }
+}

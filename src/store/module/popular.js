@@ -1,28 +1,28 @@
 import axios from "axios";
 
 const state = () => ({
-  latest: [],
+  popular: [],
 });
 
 const getters = {
-  latest(state) {
-    return state.latest;
+  popular(state) {
+    return state.popular;
   },
 };
 const mutations = {
-  GET_LATEST(state, payload) {
-    state.latest = payload;
+  GET_POPULAR(state, payload) {
+    state.popular = payload;
   },
 };
 const actions = {
-  async getLatest({ commit }, payload) {
+  async getPopular({ commit }, payload) {
     await axios
       .get(
-        `/everything?q=bitcoin&from=${payload}&pageSize=9&apiKey=e63d199a2cfe4f45bab845e903a87458`
+        `/everything?q=world&from=${payload}&sortBy=popularity&pageSize=16&apiKey=e63d199a2cfe4f45bab845e903a87458`
       )
       .then((result) => {
         console.log(result);
-        commit("GET_LATEST", result.data.articles);
+        commit("GET_POPULAR", result.data.articles);
       })
       .catch((error) => {
         console.log(error);

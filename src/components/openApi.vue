@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <v-row>
+    <v-row class="d-lg-flex d-block">
       <v-col cols="12" sm="6" class="pb-0 d-flex align-center justify-start">
         <div class="d-sm-flex align-center d-block">
           <div class="d-flex align-center">
@@ -42,7 +42,7 @@
       <v-col
         cols="12"
         sm="6"
-        class="pb-0 d-sm-flex d-block align-center justify-end"
+        class="pb-0 d-sm-flex d-block align-center justify-lg-end justify-start"
       >
         <div class="d-flex align-center justify-space-between">
           <h3>USD</h3>

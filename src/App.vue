@@ -8,6 +8,10 @@ export default {
     drawer: false,
     selectedItem: 0,
     topPoint: 0,
+    items: [
+      { flag: "russia", state: "Russian" },
+      { flag: "united-states", state: "English" },
+    ],
     nav: [
       {
         title: "Politics",
@@ -166,12 +170,38 @@ export default {
         <v-btn icon class="mr-2">
           <v-icon>mdi-magnify</v-icon>
         </v-btn>
-        <v-btn icon class="mr-2">
+        <v-menu nudge-bottom="8" rounded offset-y>
+          <template v-slot:activator="{ attrs, on }">
+            <v-btn v-bind="attrs" v-on="on" icon class="mr-2">
+              <v-icon>mdi-web</v-icon>
+            </v-btn>
+          </template>
+
+          <v-list>
+            <v-list-item
+              class="d-flex align-center"
+              v-for="item in items"
+              :key="item"
+              link
+            >
+              <v-img
+                :src="require(`@/assets/${item.flag}.png`)"
+                width="20"
+                class="mr-1"
+              ></v-img>
+              <v-list-item-title
+                v-text="item.state"
+                class="text-caption"
+              ></v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+        <!-- <v-btn icon class="mr-2">
           <v-icon>mdi-web</v-icon>
-        </v-btn>
-        <v-btn icon class="mr-2">
+        </v-btn> -->
+        <!-- <v-btn icon class="mr-2">
           <v-icon>mdi-account</v-icon>
-        </v-btn>
+        </v-btn> -->
       </v-app-bar>
 
       <v-main>
