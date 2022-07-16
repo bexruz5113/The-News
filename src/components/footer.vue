@@ -6,9 +6,11 @@
           >All rights reserved © <b class="primary--text">BB</b> , 2022
         </v-col>
         <v-col cols="12" sm="6" class="d-flex justify-end mt-sm-0 mt-2">
-          <a href="#">Instagram</a>
-          <a class="px-3" href="#">Facebook</a>
-          <a href="#">Telegram</a>
+          <a href="https://www.instagram.com/baxronov_b_/">Instagram</a>
+          <a class="px-3" href="https://www.facebook.com/bexruz.baxronov.14"
+            >Facebook</a
+          >
+          <a href="https://t.me/bexruz_baxronov">Telegram</a>
         </v-col>
       </v-row></v-container
     >

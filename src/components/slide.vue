@@ -13,7 +13,6 @@
           <swiper
             :slides-per-view="1"
             :navigation="true"
-            :pagination="true"
             @swiper="onSwiper"
             @slideChange="onSlideChange"
           >
@@ -24,10 +23,9 @@
               <div class="positionRelative">
                 <img
                   :src="getInfoPopular.urlToImage"
-                  width="100%"
-                  height="100%"
+                  class="imageStyle rounded"
                 />
-                <div class="positionAbsolute pa-3">
+                <div class="positionAbsolute pa-3 rounded">
                   <div class="text-caption d-flex align-center white--text">
                     <v-icon class="mr-1" small color="white"
                       >mdi-calendar-today-outline</v-icon
@@ -100,6 +98,18 @@ export default {
   margin: 0;
   box-sizing: border-box;
   text-decoration: none;
+}
+.imageStyle {
+  width: 100%;
+  max-width: 100vw;
+  height: 420px;
+}
+@media screen and(max-width:640px) {
+  .imageStyle {
+    width: 100%;
+    max-width: 100vw;
+    height: 280px;
+  }
 }
 .positionRelative {
   position: relative;

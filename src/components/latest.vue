@@ -23,7 +23,18 @@ export default {
     <v-container fluid>
       <v-row>
         <v-col cols="12" class="py-0">
-          <p class="text-h5 font-weight-bold text-start mb-0">Latest News</p>
+          <div class="d-flex justify-space-between align-center">
+            <div>
+              <router-link to="/latest" class="black--text">
+                <p class="text-h5 font-weight-bold text-start mb-0">
+                  Latest News
+                </p></router-link
+              >
+            </div>
+            <div>
+              <router-link to="/latest" class="mr-2">All</router-link>
+            </div>
+          </div>
           <v-divider></v-divider>
         </v-col>
         <v-col
@@ -42,7 +53,7 @@ export default {
                 {{ info.publishedAt.slice(11, 16) }}
               </div>
             </v-card-title>
-            <v-card-title class="pt-0">{{ info.author }}</v-card-title>
+            <v-card-title class="pt-0">{{ info.title }}</v-card-title>
 
             <v-card-text>
               <div>

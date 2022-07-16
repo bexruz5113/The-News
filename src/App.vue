@@ -16,38 +16,33 @@ export default {
       {
         title: "Politics",
         icon: "mdi-police-badge",
-        to: "/",
+        to: "/politics",
       },
       {
         title: "Society",
         icon: "mdi-account-group",
-        to: "/add-book",
+        to: "/society",
       },
       {
         title: "Business",
         icon: "mdi-handshake",
-        to: "/table",
+        to: "/business",
       },
 
       {
         title: "Tech",
         icon: "mdi-cog",
-        to: { name: "users" },
+        to: "/tech",
       },
       {
         title: "Culture",
         icon: "mdi-alpha-c-circle",
-        to: { name: "users" },
+        to: "/culture",
       },
       {
         title: "Sport",
         icon: "mdi-weight-lifter",
-        to: { name: "users" },
-      },
-      {
-        title: "Tourism",
-        icon: "mdi-bed",
-        to: { name: "users" },
+        to: "/sport",
       },
     ],
   }),
@@ -143,25 +138,30 @@ export default {
           </router-link>
           <li class="d-md-flex d-none mt-1">
             <ol>
-              Politics
+              <router-link class="white--text" to="/politics"
+                >Politics</router-link
+              >
             </ol>
             <ol>
-              Society
+              <router-link class="white--text" to="/society">
+                Society</router-link
+              >
             </ol>
             <ol>
-              Business
+              <router-link class="white--text" to="/business">
+                Business
+              </router-link>
             </ol>
             <ol>
-              Tech
+              <router-link class="white--text" to="/tech">Tech</router-link>
             </ol>
             <ol>
-              Culture
+              <router-link class="white--text" to="/culture">
+                Culture</router-link
+              >
             </ol>
             <ol>
-              Sport
-            </ol>
-            <ol>
-              Tourism
+              <router-link class="white--text" to="/sport"> Sport</router-link>
             </ol>
           </li>
         </div>
@@ -170,18 +170,17 @@ export default {
         <v-btn icon class="mr-2">
           <v-icon>mdi-magnify</v-icon>
         </v-btn>
-        <v-menu nudge-bottom="8" rounded offset-y>
+        <v-menu rounded offset-y>
           <template v-slot:activator="{ attrs, on }">
             <v-btn v-bind="attrs" v-on="on" icon class="mr-2">
               <v-icon>mdi-web</v-icon>
             </v-btn>
           </template>
-
           <v-list>
             <v-list-item
               class="d-flex align-center"
-              v-for="item in items"
-              :key="item"
+              v-for="(item, index) in items"
+              :key="index"
               link
             >
               <v-img

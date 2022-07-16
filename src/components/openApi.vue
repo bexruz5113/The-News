@@ -46,24 +46,18 @@
       >
         <div class="d-flex align-center justify-space-between">
           <h3>USD</h3>
-          <span class="px-sm-2 px-1">{{
-            usd.conversion_rate.toString().slice(0, 8)
-          }}</span>
+          <span class="px-sm-2 px-1">{{ usd.conversion_rate }}</span>
           <v-icon color="green">mdi-trending-up</v-icon>
         </div>
 
         <div class="d-flex px-sm-4 px-0 align-center justify-space-between">
           <h3>RUB</h3>
-          <span class="px-sm-2 px-1">
-            {{ rub.conversion_rate.toString().slice(0, 5) }}</span
-          >
+          <span class="px-sm-2 px-1"> {{ rub.conversion_rate }}</span>
           <v-icon color="green">mdi-trending-up</v-icon>
         </div>
         <div class="d-flex align-center justify-space-between">
           <h3>EUR</h3>
-          <span class="px-sm-2 px-1">{{
-            eur.conversion_rate.toString().slice(0, 8)
-          }}</span>
+          <span class="px-sm-2 px-1">{{ eur.conversion_rate }}</span>
           <v-icon color="red">mdi-trending-down</v-icon>
         </div>
       </v-col>

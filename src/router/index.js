@@ -1,7 +1,12 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "@/views/Home.vue";
-import Slide from "@/components/slide.vue";
+import Sport from "@/views/Sport.vue";
+import Tech from "@/views/Tech.vue";
+import Politics from "@/views/Politics.vue";
+import Society from "@/views/Society.vue";
+import Culture from "@/views/Culture.vue";
+import Business from "@/views/Business.vue";
 import Error from "@/components/error.vue";
 Vue.use(VueRouter);
 
@@ -12,9 +17,34 @@ const routes = [
     component: Home,
   },
   {
-    path: "/slide",
-    name: "Slide",
-    component: Slide,
+    path: "/sport",
+    name: "Sport",
+    component: Sport,
+  },
+  {
+    path: "/tech",
+    name: "Tech",
+    component: Tech,
+  },
+  {
+    path: "/business",
+    name: "Business",
+    component: Business,
+  },
+  {
+    path: "/politics",
+    name: "Politics",
+    component: Politics,
+  },
+  {
+    path: "/society",
+    name: "Society",
+    component: Society,
+  },
+  {
+    path: "/culture",
+    name: "Culture",
+    component: Culture,
   },
   {
     path: "**",
