@@ -69,27 +69,27 @@ export default {
               cols="12"
               sm="6"
               md="8"
-              v-for="(getInfo, index) in getNewsInfo.slice(0, 1)"
+              v-for="(getNewsData, index) in getNewsInfo.slice(0, 1)"
               :key="index"
             >
-              <a :href="getInfo.url">
+              <a :href="getNewsData.url">
                 <div class="windowHover mx-auto my-md-6 my-4">
                   <div class="positionRelative">
                     <v-img
                       height="320"
                       class="hoverImage rounded"
-                      :src="getInfo.urlToImage"
+                      :src="getNewsData.urlToImage"
                     ></v-img>
                     <div class="positionAbsolute pa-2 rounded">
                       <div class="text-caption d-flex align-center white--text">
                         <v-icon class="mr-1" small color="white"
                           >mdi-calendar-today-outline</v-icon
                         >
-                        {{ getInfo.publishedAt.slice(11, 16) }} /
-                        {{ getInfo.publishedAt.slice(0, 10) }}
+                        {{ getNewsData.publishedAt.slice(11, 16) }} /
+                        {{ getNewsData.publishedAt.slice(0, 10) }}
                       </div>
                       <div class="text-lg-subtitle-1 text-caption white--text">
-                        <span v-html="getInfo.description"></span>
+                        <span v-html="getNewsData.description"></span>
                       </div>
                     </div>
                   </div></div

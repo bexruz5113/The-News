@@ -1,17 +1,17 @@
 import axios from "axios";
 
 const state = () => ({
-  weather: [],
+  getWeatherInfo: [],
 });
 
 const getters = {
-  weather(state) {
-    return state.weather;
+  getWeatherInfo(state) {
+    return state.getWeatherInfo;
   },
 };
 const mutations = {
   GET_WEATHER(state, payload) {
-    state.weather = payload;
+    state.getWeatherInfo = payload;
   },
 };
 const actions = {

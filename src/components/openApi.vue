@@ -4,13 +4,40 @@
       <v-col cols="12" sm="6" class="pb-0 d-flex align-center justify-start">
         <div class="d-sm-flex align-center d-block">
           <div class="d-flex align-center">
-            <div>
-              <v-img width="20" src="../assets/cloudy (1).png"></v-img>
-            </div>
+            <div
+              v-for="(getMain, index) in getWeatherInfo.weather"
+              :key="index"
+            >
+              <v-img
+                v-if="getMain.decoration == 'light rain'"
+                width="20"
+                src="../assets/light-rain.png"
+              >
+              </v-img>
+              <v-img
+                v-else-if="getMain.description == 'overcast clouds'"
+                width="20"
+                src="../assets/overcast clouds.png"
+              >
+              </v-img>
+              <v-img
+                v-else-if="getMain.description == 'few clouds'"
+                width="20"
+                src="../assets/few cloud.png"
+              >
+              </v-img>
+              <v-img
+                v-else-if="getMain.description == 'broken clouds'"
+                width="20"
+                src="../assets/broken clouds.png"
+              >
+              </v-img>
 
+              <v-img v-else width="20" src="../assets/clear sky.png"></v-img>
+            </div>
             <div class="b-block mx-3">
               <div>
-                <b v-if="weather.main && weather.main.temp"
+                <b v-if="getWeatherInfo.main && getWeatherInfo.main.temp"
                   >+{{ calculate }} °C
                 </b>
               </div>
@@ -19,8 +46,8 @@
               <v-img width="20" src="../assets/wind.png"></v-img>
             </div>
             <div>
-              <b v-if="weather.wind && weather.wind.speed">
-                {{ weather.wind.speed }} m/s
+              <b v-if="getWeatherInfo.wind && getWeatherInfo.wind.speed">
+                {{ getWeatherInfo.wind.speed }} m/s
               </b>
             </div>
           </div>
@@ -94,14 +121,14 @@ export default {
     this.getEur();
   },
   computed: {
-    ...mapGetters("weather", ["weather"]),
+    ...mapGetters("getWeatherInfo", ["getWeatherInfo"]),
     ...mapGetters("forex", ["usd", "rub", "eur"]),
     calculate() {
-      return Math.floor(this.weather.main.temp - 273.15);
+      return Math.floor(this.getWeatherInfo.main.temp - 273.15);
     },
   },
   methods: {
-    ...mapActions("weather", ["getWeather"]),
+    ...mapActions("getWeatherInfo", ["getWeather"]),
     ...mapActions("forex", ["getUsd", "getRub", "getEur"]),
 
     onChange() {

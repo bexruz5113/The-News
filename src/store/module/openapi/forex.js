@@ -32,7 +32,7 @@ const actions = {
   async getUsd({ commit }) {
     await axios
       .get(
-        "https://v6.exchangerate-api.com/v6/85ee0528d0369ff8e0088522/pair/USD/UZS"
+        "https://v6.exchangerate-api.com/v6/916ab8f9ce4984bfb0471222/pair/USD/UZS"
       )
       .then((result) => {
         console.log(result);
@@ -45,7 +45,7 @@ const actions = {
   async getRub({ commit }) {
     await axios
       .get(
-        "https://v6.exchangerate-api.com/v6/85ee0528d0369ff8e0088522/pair/RUB/UZS"
+        "https://v6.exchangerate-api.com/v6/916ab8f9ce4984bfb0471222/pair/RUB/UZS"
       )
       .then((result) => {
         console.log(result);
@@ -58,7 +58,7 @@ const actions = {
   async getEur({ commit }) {
     await axios
       .get(
-        "https://v6.exchangerate-api.com/v6/85ee0528d0369ff8e0088522/pair/EUR/UZS"
+        "https://v6.exchangerate-api.com/v6/916ab8f9ce4984bfb0471222/pair/EUR/UZS"
       )
       .then((result) => {
         console.log(result);

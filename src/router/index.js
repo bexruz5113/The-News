@@ -1,7 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "@/views/Home.vue";
-import Sport from "@/views/Sport.vue";
 import Tech from "@/views/Tech.vue";
 import Politics from "@/views/Politics.vue";
 import Society from "@/views/Society.vue";
@@ -19,7 +18,8 @@ const routes = [
   {
     path: "/sport",
     name: "Sport",
-    component: Sport,
+    component: () =>
+      import(/* webpackChunkName: "sport" */ "../views/Sport.vue"),
   },
   {
     path: "/tech",
