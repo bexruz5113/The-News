@@ -170,6 +170,7 @@ export default {
         <v-btn icon class="mr-2">
           <v-icon>mdi-magnify</v-icon>
         </v-btn>
+
         <v-menu rounded offset-y>
           <template v-slot:activator="{ attrs, on }">
             <v-btn v-bind="attrs" v-on="on" icon class="mr-2">

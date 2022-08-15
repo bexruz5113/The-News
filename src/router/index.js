@@ -22,6 +22,12 @@ const routes = [
       import(/* webpackChunkName: "sport" */ "../views/Sport.vue"),
   },
   {
+    path: "/footer",
+    name: "Footer",
+    component: () =>
+      import(/* webpackChunkName: "sport" */ "../components/footer.vue"),
+  },
+  {
     path: "/tech",
     name: "Tech",
     component: Tech,

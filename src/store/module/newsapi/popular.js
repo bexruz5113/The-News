@@ -18,7 +18,7 @@ const actions = {
   async getPopular({ commit }, payload) {
     await axios
       .get(
-        `/everything?q=world&from=${payload}&sortBy=popularity&pageSize=16&apiKey=e63d199a2cfe4f45bab845e903a87458`
+        `/everything?q=world&from=${payload}&sortBy=popularity&pageSize=16&apiKey=adb60e2e376e4fa39fa45a80a1f9fbfd`
       )
       .then((result) => {
         console.log(result);

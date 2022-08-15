@@ -18,7 +18,7 @@ const actions = {
   async getTech({ commit }, payload) {
     await axios
       .get(
-        `/everything?q=tech&from=2022-07-01&page=${payload}&apiKey=e63d199a2cfe4f45bab845e903a87458`
+        `/everything?q=tech&page=${payload}&apiKey=adb60e2e376e4fa39fa45a80a1f9fbfd`
       )
       .then((result) => {
         console.log(result);

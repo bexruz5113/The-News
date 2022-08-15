@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { mapActions, mapGetters } from "vuex";
 import Footer from "../components/footer.vue";
 import latest from "../components/latest.vue";

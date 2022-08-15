@@ -9,6 +9,8 @@ export interface Sport {
   content: string;
 }
 export interface Weather {
-  name: string;
-  value: string;
+  weather: string[];
+  main: string;
+  temp: number;
+  wind: number;
 }
